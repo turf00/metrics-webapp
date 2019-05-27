@@ -1,7 +1,7 @@
 package com.justin.contrast.metric.processing;
 
-import com.justin.contrast.metric.HttpMethod;
 import com.justin.contrast.metric.Metric;
+import com.justin.contrast.metric.http.HttpMethod;
 
 public final class TestHelper {
     private TestHelper() { }

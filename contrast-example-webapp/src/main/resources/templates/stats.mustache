@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Contrast Metrics Web App - Justin McCartney</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid #999;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>Metric Stats</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Count</th>
+        <th>Min</th>
+        <th>Max</th>
+        <th>Mean</th>
+    </tr>
+
+    {{#stats}}
+        <tr>
+            <td>{{name}}</td>
+            <td>{{count}}</td>
+            <td>{{min}}</td>
+            <td>{{max}}</td>
+            <td>{{mean}}</td>
+        </tr>
+    {{/stats}}
+</table>
+
+</body>
+</html>

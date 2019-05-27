@@ -1,4 +1,4 @@
-package com.justin.contrast.metric;
+package com.justin.contrast.metric.http;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

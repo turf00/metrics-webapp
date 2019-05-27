@@ -1,5 +1,6 @@
 package com.justin.contrast.metric;
 
+import com.justin.contrast.metric.http.UniqueIdHeaderFilter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -9,7 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
-import static com.justin.contrast.metric.UniqueIdHeaderFilter.HEADER_REQUEST_ID;
+import static com.justin.contrast.metric.http.UniqueIdHeaderFilter.HEADER_REQUEST_ID;
 
 public class UniqueIdHeaderFilterTest {
 

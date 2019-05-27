@@ -1,9 +1,9 @@
 package com.justin.contrast.metrics;
 
-import com.justin.contrast.metric.HttpMethod;
 import com.justin.contrast.metric.Metric;
 import com.justin.contrast.metric.MetricFacade;
-import com.justin.contrast.metric.UniqueIdHeaderFilter;
+import com.justin.contrast.metric.http.HttpMethod;
+import com.justin.contrast.metric.http.UniqueIdHeaderFilter;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.RequestLog;
 import org.eclipse.jetty.server.Response;
@@ -32,8 +32,7 @@ public class JettyMetricLogger implements RequestLog {
         final long timeTakenMs = end - request.getTimeStamp();
         final String uniqueId = response.getHeader(UniqueIdHeaderFilter.HEADER_REQUEST_ID);
         if (uniqueId != null) {
-
-            final Metric metric = new Metric(uniqueId, uri, HttpMethod.GET, bytesWritten, timeTakenMs);
+            final Metric metric = new Metric(uniqueId, uri, HttpMethod.GET, bytesWritten, timeTakenMs, request.getTimeStamp());
             metrics.emit(metric);
         }
 

@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Contrast Metrics Web App - Justin McCartney</title>
+<style>
+table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid #999;
+    padding: 5px;
+}
+</style>
+</head>
+<body>
+<h1>Metrics</h1>
+<form action="/metrics/search" method="GET">
+    Search for request id:<br>
+    <input type="text" name="id" value="">
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
+
+<p>Count: {{metrics.size}}</p>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Method</th>
+        <th>Uri</th>
+        <th>Datetime (UTC)</th>
+        <th>timeTaken (ms)</th>
+        <th>size of response (bytes)</th>
+    </tr>
+
+    {{#metrics.0}}
+        {{#metrics}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{method}}</td>
+                <td>{{uri}}</td>
+                <td>{{dateTime}}</td>
+                <td>{{timeTakenMs}}</td>
+                <td>{{bytesWritten}}</td>
+            </tr>
+        {{/metrics}}
+    {{/metrics.0}}
+</table>
+
+</body>
+</html>

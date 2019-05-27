@@ -1,5 +1,6 @@
 package com.justin.contrast.metric;
 
+import com.justin.contrast.metric.http.HttpMethod;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,6 +23,9 @@ public class HttpMethodTest {
 
         input = " \tpost ";
         assertCorrect(HttpMethod.POST, input);
+
+        input = "delete";
+        assertCorrect(HttpMethod.DELETE, input);
     }
 
     @Test

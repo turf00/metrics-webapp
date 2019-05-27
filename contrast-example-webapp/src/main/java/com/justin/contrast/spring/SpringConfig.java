@@ -1,8 +1,8 @@
 package com.justin.contrast.spring;
 
 import com.justin.contrast.metric.MetricFacade;
-import com.justin.contrast.metric.MetricFilter;
-import com.justin.contrast.metric.UniqueIdHeaderFilter;
+import com.justin.contrast.metric.http.MetricFilter;
+import com.justin.contrast.metric.http.UniqueIdHeaderFilter;
 import com.justin.contrast.metric.processing.MetricFacadeImpl;
 import com.justin.contrast.service.AccountService;
 import com.justin.contrast.service.MetricService;

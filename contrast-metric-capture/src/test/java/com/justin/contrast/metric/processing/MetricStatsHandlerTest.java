@@ -1,6 +1,6 @@
 package com.justin.contrast.metric.processing;
 
-import com.justin.contrast.metric.HttpMethod;
+import com.justin.contrast.metric.http.HttpMethod;
 import com.justin.contrast.metric.Metric;
 import com.justin.contrast.metric.MetricStats;
 import org.junit.jupiter.api.BeforeEach;
