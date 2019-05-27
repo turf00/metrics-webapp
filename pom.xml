@@ -18,6 +18,7 @@
     <modules>
         <module>contrast-metric-capture</module>
         <module>contrast-example-webapp</module>
+        <module>contrast-perftest</module>
     </modules>
 
     <dependencyManagement>

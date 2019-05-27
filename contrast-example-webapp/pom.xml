@@ -55,6 +55,13 @@
             <artifactId>spring-boot-starter-mustache</artifactId>
         </dependency>
 
+        <!-- Metric capture -->
+        <dependency>
+            <groupId>com.justin</groupId>
+            <artifactId>contrast-metric-capture</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- Test dependencies -->
 
         <dependency>
