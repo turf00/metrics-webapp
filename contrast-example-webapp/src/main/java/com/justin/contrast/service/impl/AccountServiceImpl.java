@@ -7,6 +7,7 @@ import com.justin.contrast.util.TransactionGenerator;
 import com.justin.contrast.service.AccountService;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 import static com.justin.contrast.util.SimulateUtil.simulateNetworkDelay;
@@ -19,6 +20,7 @@ public final class AccountServiceImpl implements AccountService {
 
     @Override
     public Account getAccount(final String accountId) {
+        Objects.requireNonNull(accountId);
         simulateNetworkDelay();
         return build(accountId);
     }

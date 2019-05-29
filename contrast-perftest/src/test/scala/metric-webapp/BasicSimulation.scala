@@ -36,5 +36,5 @@ class BasicSimulation extends Simulation {
       .get("${transactionUrl}"))
 
   //setUp(scn.inject(atOnceUsers(10) during 300s).protocols(httpProtocol))
-  setUp(scn.inject(rampUsersPerSec(10) to 500 during 30).protocols(httpProtocol))
+  setUp(scn.inject(rampUsersPerSec(100) to 500 during 300s).protocols(httpProtocol))
 }

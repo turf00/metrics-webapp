@@ -19,7 +19,7 @@ public final class TransactionGenerator {
     public static Transaction generate(final String id) {
         final String amount = AmountGenerator.amount();
 
-        return new Transaction(UUID.randomUUID().toString(),
+        return new Transaction(id,
                 UUID.randomUUID().toString(),
                 DateGenerator.randomLastXDays(LAST_7_DAYS),
                 amount,

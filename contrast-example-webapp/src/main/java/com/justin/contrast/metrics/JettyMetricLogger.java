@@ -8,15 +8,25 @@ import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.RequestLog;
 import org.eclipse.jetty.server.Response;
 
+import java.util.Objects;
+
 public class JettyMetricLogger implements RequestLog {
 
-    private final RequestLog defaultLogger;
+    private volatile RequestLog defaultLogger;
     private final MetricFacade metrics;
 
     public JettyMetricLogger(final RequestLog defaultLogger,
                              final MetricFacade metricFacade) {
         this.defaultLogger = defaultLogger;
-        metrics = metricFacade;
+        metrics = Objects.requireNonNull(metricFacade);
+    }
+
+    public JettyMetricLogger(final MetricFacade metricFacade) {
+        this(null, metricFacade);
+    }
+
+    public void setDefaultLogger(final RequestLog defaultLogger) {
+        this.defaultLogger = defaultLogger;
     }
 
     @Override
@@ -31,12 +41,11 @@ public class JettyMetricLogger implements RequestLog {
         final long bytesWritten = response.getHttpChannel().getBytesWritten();
         final long timeTakenMs = end - request.getTimeStamp();
         final String uniqueId = response.getHeader(UniqueIdHeaderFilter.HEADER_REQUEST_ID);
+        // Unique only added to certain paths, therefore ignore other paths if header not set
         if (uniqueId != null) {
             final Metric metric = new Metric(uniqueId, uri, HttpMethod.GET, bytesWritten, timeTakenMs, request.getTimeStamp());
             metrics.emit(metric);
         }
-
-        System.out.printf("URI: [%s], time timeTakenMs: [%dms], bytes: [%d], id: [%s]%n", uri, timeTakenMs, bytesWritten, uniqueId);
     }
 
     private void doDefault(final Request request,
