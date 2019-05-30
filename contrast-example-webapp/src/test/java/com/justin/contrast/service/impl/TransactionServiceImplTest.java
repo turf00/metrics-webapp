@@ -1,24 +1,24 @@
 package com.justin.contrast.service.impl;
 
 import com.justin.contrast.domain.Transaction;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class TransactionServiceImplTest {
 
     private TransactionServiceImpl testee;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         testee = new TransactionServiceImpl();
     }
 
     @Test
     public void shouldThrowExIfNullTransactionIdProvided() {
-        assertThrows(NullPointerException.class, () -> testee.get("Account", null));
+        assertThatThrownBy(() -> testee.get("Account", null)).isInstanceOf(NullPointerException.class);
     }
 
     @Test

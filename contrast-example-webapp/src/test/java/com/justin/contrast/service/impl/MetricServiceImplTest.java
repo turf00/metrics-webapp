@@ -3,8 +3,8 @@ package com.justin.contrast.service.impl;
 import com.justin.contrast.metric.Metric;
 import com.justin.contrast.metric.MetricFacade;
 import com.justin.contrast.metric.MetricStats;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.util.Collections;
@@ -19,7 +19,7 @@ public class MetricServiceImplTest {
     private MetricFacade mockFacade;
     private MetricServiceImpl testee;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         mockFacade = Mockito.mock(MetricFacade.class);
         testee = new MetricServiceImpl(mockFacade);

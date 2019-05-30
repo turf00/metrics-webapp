@@ -1,12 +1,12 @@
 package com.justin.contrast.util;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.time.ZonedDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class DateGeneratorTest {
+public class DateGeneratorTest {
     @Test
     public void shouldReturnDateWithinXDays() {
         final int days = 2;

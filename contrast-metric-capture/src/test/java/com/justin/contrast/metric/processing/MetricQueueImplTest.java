@@ -1,9 +1,9 @@
 package com.justin.contrast.metric.processing;
 
 import com.justin.contrast.metric.Metric;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.util.concurrent.TimeUnit;
@@ -17,14 +17,14 @@ public class MetricQueueImplTest {
     private MetricQueueImpl testee;
     private Consumer<Metric> mockConsumer;
 
-    @BeforeEach
+    @Before
     @SuppressWarnings("unchecked")
     public void setUp() {
         mockConsumer = Mockito.mock(Consumer.class);
         testee = new MetricQueueImpl(1, mockConsumer);
     }
 
-    @AfterEach
+    @After
     public void tearDown() {
         testee.stop();
     }

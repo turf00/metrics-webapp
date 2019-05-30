@@ -3,11 +3,12 @@ package com.justin.contrast.metric.processing;
 import com.justin.contrast.metric.Metric;
 import com.justin.contrast.metric.MetricQueue;
 import com.justin.contrast.metric.MetricStats;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static com.justin.contrast.metric.processing.MetricFacadeImpl.WAIT_TIME_MS;
@@ -23,7 +24,7 @@ public class MetricFacadeImplTest {
     private MetricFacadeImpl testee;
     private final Metric metric = TestHelper.metric();
 
-    @BeforeEach
+    @Before
     @SuppressWarnings("unchecked")
     public void setUp() {
         mockBuffer = mock(RingBufferWithLookup.class);
@@ -64,7 +65,7 @@ public class MetricFacadeImplTest {
 
     @Test
     public void shouldReturnAllMetricsWhenRequested() {
-        final List<Metric> expected = Arrays.asList(metric);
+        final List<Metric> expected = Collections.singletonList(metric);
 
         when(mockBuffer.getAll()).thenReturn(expected);
 

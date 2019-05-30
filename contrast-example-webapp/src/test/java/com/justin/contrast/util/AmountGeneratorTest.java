@@ -1,12 +1,12 @@
 package com.justin.contrast.util;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class AmountGeneratorTest {
+public class AmountGeneratorTest {
     final Pattern EXPECTED_FORMAT = Pattern.compile("\\d+\\.\\d{2}");
 
     @Test

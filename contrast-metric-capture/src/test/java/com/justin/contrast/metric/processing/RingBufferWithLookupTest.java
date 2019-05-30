@@ -1,18 +1,18 @@
 package com.justin.contrast.metric.processing;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RingBufferWithLookupTest {
+public class RingBufferWithLookupTest {
 
     private static final int CAPACITY = 10;
     private RingBufferWithLookup<Integer, Integer> testee;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         testee = new RingBufferWithLookup<>(CAPACITY);
     }

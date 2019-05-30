@@ -1,6 +1,7 @@
 package com.justin.contrast;
 
 import com.justin.contrast.controller.AccountController;
+import com.justin.contrast.controller.MetricController;
 import com.justin.contrast.controller.TransactionController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,15 +15,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 public class ContrastMetricWebappApplicationTests {
 
+    // TODO: Further bean tests
     @Autowired
     private AccountController accountController;
     @Autowired
     private TransactionController transactionController;
+    @Autowired
+    private MetricController metricController;
 
     @Test
     public void contextLoads() {
         assertThat(accountController).isNotNull();
         assertThat(transactionController).isNotNull();
+        assertThat(metricController).isNotNull();
     }
 
 }

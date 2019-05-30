@@ -1,10 +1,10 @@
 package com.justin.contrast.metric;
 
 import com.justin.contrast.metric.http.HttpMethod;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class HttpMethodTest {
     @Test
@@ -30,7 +30,7 @@ public class HttpMethodTest {
 
     @Test
     public void shouldThrowExceptionWhenInvalidInput() {
-        assertThrows(IllegalArgumentException.class, () -> HttpMethod.fromString("not a http method"));
+        assertThatThrownBy(() -> HttpMethod.fromString("not a http method")).isInstanceOf(IllegalArgumentException.class);
     }
 
     private void assertCorrect(final HttpMethod expected, final String input) {

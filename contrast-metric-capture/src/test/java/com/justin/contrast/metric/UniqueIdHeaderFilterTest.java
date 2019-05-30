@@ -1,8 +1,8 @@
 package com.justin.contrast.metric;
 
 import com.justin.contrast.metric.http.UniqueIdHeaderFilter;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mockito;
 
 import javax.servlet.FilterChain;
@@ -18,7 +18,7 @@ public class UniqueIdHeaderFilterTest {
     private UniqueIdHeaderFilter testee;
     private FilterChain mockChain;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         testee = new UniqueIdHeaderFilter();
         mockRequest = Mockito.mock(ServletRequest.class);

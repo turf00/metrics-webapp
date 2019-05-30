@@ -1,11 +1,11 @@
 package com.justin.contrast.service.impl;
 
 import com.justin.contrast.domain.Account;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class AccountServiceImplTest {
 
@@ -13,14 +13,14 @@ public class AccountServiceImplTest {
 
     private AccountServiceImpl testee;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         testee = new AccountServiceImpl();
     }
 
     @Test
     public void shouldThrowExIfNullAccountIdProvided() {
-        assertThrows(NullPointerException.class, () -> testee.getAccount(null));
+        assertThatThrownBy(() -> testee.getAccount(null)).isInstanceOf(NullPointerException.class);
     }
 
     @Test

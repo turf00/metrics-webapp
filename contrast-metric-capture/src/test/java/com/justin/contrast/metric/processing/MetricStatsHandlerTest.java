@@ -3,8 +3,8 @@ package com.justin.contrast.metric.processing;
 import com.justin.contrast.metric.http.HttpMethod;
 import com.justin.contrast.metric.Metric;
 import com.justin.contrast.metric.MetricStats;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,7 +12,7 @@ public class MetricStatsHandlerTest {
 
     private MetricStatsHandler testee;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         testee = new MetricStatsHandler();
     }

@@ -1,17 +1,18 @@
 package com.justin.contrast.metric.processing;
 
 import com.justin.contrast.metric.Metric;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mockito;
 
+@SuppressWarnings("unchecked")
 public class MetricConsumerTest {
 
     private final RingBufferWithLookup<String, Metric> mockBuffer = Mockito.mock(RingBufferWithLookup.class);
     private final MetricStatsHandler mockStats = Mockito.mock(MetricStatsHandler.class);
     private MetricConsumer testee;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         Mockito.reset(mockBuffer, mockStats);
         testee = new MetricConsumer(mockStats, mockBuffer);

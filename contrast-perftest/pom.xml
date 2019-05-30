@@ -11,6 +11,7 @@
 
   <artifactId>contrast-perftest</artifactId>
   <version>3.1.2</version>
+  <packaging>pom</packaging>
 
   <properties>
     <gatling.version>3.1.2</gatling.version>
