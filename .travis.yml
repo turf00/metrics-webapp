@@ -1,1 +1,12 @@
 language: java
+
+env:
+  global:
+    - CODECOV_TOKEN=dbc825ec-7946-4545-ba97-53a85ec1c177
+
+jdk:
+  - openjdk8
+
+after_success:
+  # - mvn clean test jacoco:report coveralls:report
+  - bash <(curl -s https://codecov.io/bash)
