@@ -1,5 +1,7 @@
 package com.justin.contrast.spring;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import com.justin.contrast.metric.MetricFacade;
 import com.justin.contrast.metric.http.UniqueIdHeaderFilter;
 import com.justin.contrast.metric.processing.MetricFacadeImpl;
@@ -15,6 +17,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import static com.fasterxml.jackson.annotation.JsonCreator.Mode.PROPERTIES;
 
 @Configuration
 public class SpringConfig {
@@ -72,5 +76,13 @@ public class SpringConfig {
     @Bean
     public JettyMetricLogger metricLogger(final MetricFacade metricFacade) {
         return new JettyMetricLogger(metricFacade);
+    }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        final ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new ParameterNamesModule(PROPERTIES));
+
+        return objectMapper;
     }
 }

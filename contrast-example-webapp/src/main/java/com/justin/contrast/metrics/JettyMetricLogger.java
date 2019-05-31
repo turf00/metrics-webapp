@@ -41,9 +41,11 @@ public class JettyMetricLogger implements RequestLog {
         final long bytesWritten = response.getHttpChannel().getBytesWritten();
         final long timeTakenMs = end - request.getTimeStamp();
         final String uniqueId = response.getHeader(UniqueIdHeaderFilter.HEADER_REQUEST_ID);
+
         // Unique only added to certain paths, therefore ignore other paths if header not set
         if (uniqueId != null) {
-            final Metric metric = new Metric(uniqueId, uri, HttpMethod.GET, bytesWritten, timeTakenMs, request.getTimeStamp());
+            final HttpMethod method = HttpMethod.fromString(request.getMethod());
+            final Metric metric = new Metric(uniqueId, uri, method, bytesWritten, timeTakenMs, request.getTimeStamp());
             metrics.emit(metric);
         }
     }
