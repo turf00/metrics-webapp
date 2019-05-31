@@ -1,6 +1,7 @@
 # Metrics WebApp
 
 [![Build Status](https://travis-ci.com/turf00/metrics-webapp.svg?branch=master)](https://travis-ci.org/turf00/metrics-webapp)
+[![codecov](https://codecov.io/gh/turf00/metrics-webapp/branch/master/graph/badge.svg)](https://codecov.io/gh/turf00/metrics-webapp)
 
 ## What
 
