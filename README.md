@@ -1,17 +1,19 @@
 # Metrics WebApp
 
+[![Build Status](https://travis-ci.com/turf00/metrics-webapp.svg?branch=master)](https://travis-ci.org/turf00/metrics-webapp)
+
 ## What
 
-An example application showing the capturing of metrics related to HTTP requests made to a Spring Boot application.
+An example Spring Boot application showing the capturing of metrics related to HTTP requests.
 
-https://travis-ci.com/turf00/metrics-webapp.svg?branch=master
+
 
 ## Why
 
 This section contains some information on design considerations.
 
 + Maven was used over Gradle as the build tool as I have more experience with Maven.  Although for any new projects I would prefer to use Gradle.
-+ I was forced to use Junit 4 rather than Junit 5 as code coverage did not appear to work correctly with Jacoco.
++ I was forced to use Junit 4 rather than Junit 5 as code coverage did not appear to work correctly with Jacoco and Junit 5.
 
 ## Test APIs
 
