@@ -27,7 +27,7 @@ class BasicSimulation extends Simulation {
     .acceptEncodingHeader("gzip, deflate")
     .userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:16.0) Gecko/20100101 Firefox/16.0")
 
-  val scn = scenario("GetAccount and Transactions") // A scenario is a chain of requests and pauses
+  val scn = scenario("GetAccount and Transactions")
     .feed(feeder)
     .exec(http("GetAccount")
       .get("${accountUrl}"))
@@ -35,6 +35,5 @@ class BasicSimulation extends Simulation {
     .exec(http("GetTransactions")
       .get("${transactionUrl}"))
 
-  //setUp(scn.inject(atOnceUsers(10) during 300s).protocols(httpProtocol))
-  setUp(scn.inject(rampUsersPerSec(100) to 500 during 300s).protocols(httpProtocol))
+  setUp(scn.inject(rampUsersPerSec(100) to 500 during 150).protocols(httpProtocol))
 }
