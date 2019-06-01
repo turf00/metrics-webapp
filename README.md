@@ -7,14 +7,15 @@
 
 An example Spring Boot application showing the capturing of metrics related to HTTP requests.
 
-
-
 ## Why
 
 This section contains some information on design considerations.
 
-+ Maven was used over Gradle as the build tool as I have more experience with Maven.  Although for any new projects I would prefer to use Gradle.
++ Maven was used over Gradle as I have more experience with Maven.  Although for any new projects I would prefer to use Gradle.
 + I was forced to use Junit 4 rather than Junit 5 as code coverage did not appear to work correctly with Jacoco and Junit 5.
++ I used Spring Boot and Spring Web MVC for implementing the APIs that we are going to capture metrics on.
++ Mustache was used as a simple templating language for the very basic UI pages to fetch metrics.
++ In order to remove the need for shared state when possible and to avoid delaying the response back to the client for metric capture overhead, the 
 
 ## Test APIs
 
@@ -41,4 +42,9 @@ You can start the app from the command line as follows in the root of the projec
 ### Application configuration
 
 There are a number of configuration settings which can be adjusted from the command line:
+
+## Future Work
+
++ Dockerise the application and the build.
++ The consumer that parses the incoming metrics to produce the stats, etc should handle parsing multiple metrics at a single time.  This would involve using smart batching, i.e. batching by count and time.
 

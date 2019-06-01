@@ -1,7 +1,7 @@
 package com.justin.contrast.spring;
 
-import com.justin.contrast.metrics.JettyMetricLogger;
-import org.eclipse.jetty.server.RequestLog;
+import com.justin.contrast.metrics.JettyChannelListenerMetricLogger;
+import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 import org.eclipse.jetty.util.thread.ThreadPool;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +19,10 @@ public class JettyCustomiser implements WebServerFactoryCustomizer<JettyServletW
     @Value("${app.jetty.threads}")
     private int jettyThreads;
 
-    private final JettyMetricLogger metricLogger;
+    private final JettyChannelListenerMetricLogger metricLogger;
 
     @Autowired
-    public JettyCustomiser(final JettyMetricLogger metricLogger) {
+    public JettyCustomiser(final JettyChannelListenerMetricLogger metricLogger) {
         this.metricLogger = Objects.requireNonNull(metricLogger);
     }
 
@@ -32,9 +32,9 @@ public class JettyCustomiser implements WebServerFactoryCustomizer<JettyServletW
         factory.setThreadPool(pool);
 
         factory.addServerCustomizers((JettyServerCustomizer) server -> {
-            final RequestLog defaultLogger = server.getRequestLog();
-            metricLogger.setDefaultLogger(defaultLogger);
-            server.setRequestLog(metricLogger);
+            for (final Connector c : server.getConnectors()) {
+                c.addBean(metricLogger);
+            }
         });
     }
 }

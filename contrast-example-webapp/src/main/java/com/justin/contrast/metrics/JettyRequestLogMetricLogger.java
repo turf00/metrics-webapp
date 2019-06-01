@@ -10,18 +10,18 @@ import org.eclipse.jetty.server.Response;
 
 import java.util.Objects;
 
-public class JettyMetricLogger implements RequestLog {
+public class JettyRequestLogMetricLogger implements RequestLog {
 
     private volatile RequestLog defaultLogger;
     private final MetricFacade metrics;
 
-    public JettyMetricLogger(final RequestLog defaultLogger,
-                             final MetricFacade metricFacade) {
+    public JettyRequestLogMetricLogger(final RequestLog defaultLogger,
+                                       final MetricFacade metricFacade) {
         this.defaultLogger = defaultLogger;
         metrics = Objects.requireNonNull(metricFacade);
     }
 
-    public JettyMetricLogger(final MetricFacade metricFacade) {
+    public JettyRequestLogMetricLogger(final MetricFacade metricFacade) {
         this(null, metricFacade);
     }
 

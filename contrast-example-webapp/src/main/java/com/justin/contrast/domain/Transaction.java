@@ -10,7 +10,7 @@ public final class Transaction {
     private final String amount;
     private final String description;
 
-    public Transaction(final String id,
+    public Transaction(String id,
                        final String customerId,
                        final ZonedDateTime effectiveDate,
                        final String amount,
