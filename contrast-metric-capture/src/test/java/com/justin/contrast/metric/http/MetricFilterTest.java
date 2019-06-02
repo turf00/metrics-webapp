@@ -7,6 +7,7 @@ import org.mockito.Mockito;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.ServletRequest;
@@ -60,6 +61,22 @@ public class MetricFilterTest {
         when(mockRequest.getRequestURI()).thenReturn(URI);
 
         testee.doFilter(mockRequest, mockResponse, filterChain);
+    }
+
+    @Test
+    public void shouldStartMetricFacadeOnInit() {
+        final FilterConfig mockConfig = Mockito.mock(FilterConfig.class);
+
+        testee.init(mockConfig);
+
+        Mockito.verify(mockFacade).start();
+    }
+
+    @Test
+    public void shouldStopMetricFacadeOnInit() {
+        testee.destroy();
+
+        Mockito.verify(mockFacade).stop();
     }
 
     private class WriteSomeDataFilter implements Filter, FilterChain {

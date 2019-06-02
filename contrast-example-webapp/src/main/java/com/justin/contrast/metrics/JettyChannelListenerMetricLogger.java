@@ -28,7 +28,6 @@ public class JettyChannelListenerMetricLogger implements HttpChannel.Listener {
     @Override
     public void onResponseEnd(Request request) {
         final Long timeTakenMs = (Long) request.getAttribute(TIME_TAKEN);
-        final HttpChannel httpChannel = request.getHttpChannel();
         final long bytesWritten = request.getHttpChannel().getBytesWritten();
         final String uniqueId = request.getResponse().getHeader(UniqueIdHeaderFilter.HEADER_REQUEST_ID);
         final String uri = request.getRequestURI();

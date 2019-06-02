@@ -5,6 +5,7 @@ import com.justin.contrast.metric.MetricFacade;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.ServletRequest;
@@ -47,6 +48,15 @@ public class MetricFilter implements Filter {
 
             metricFacade.emit(metric(request, counterResponse.getUniqueId(), bytesWritten, timeTakenMs, start));
         }
+    }
+
+    public void init(FilterConfig filterConfig) {
+        metricFacade.start();
+    }
+
+    @Override
+    public void destroy() {
+        metricFacade.stop();
     }
 
     private static Metric metric(final ServletRequest request,
