@@ -11,10 +11,20 @@ An example Spring Boot application showing the capturing of metrics related to H
 
 This section contains some information on design considerations.
 
+### General
+
 + Maven was used over Gradle as I have more experience with Maven.  Although for any new projects I would prefer to use Gradle.
 + I was forced to use Junit 4 rather than Junit 5 as code coverage did not appear to work correctly with Jacoco and Junit 5.
 + I used Spring Boot and Spring Web MVC for implementing the APIs that we are going to capture metrics on.
 + Mustache was used as a simple templating language for the very basic UI pages to fetch metrics.
++ I created some RESTful endpoints rather than pages as I am more familiar with that.  Most Web UI experience I have is with React and JS.
+
+### Metric Capture
+
+I created three methods of capturing the metrics:
+
++ Filter ()
+
 + In order to remove the need for shared state when possible and to avoid delaying the response back to the client for metric capture overhead, the 
 
 ## Test APIs

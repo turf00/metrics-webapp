@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.justin.contrast.json.JacksonModule;
 import com.justin.contrast.metric.MetricFacade;
+import com.justin.contrast.metric.http.MetricFilter;
 import com.justin.contrast.metric.http.UniqueIdHeaderFilter;
 import com.justin.contrast.metric.processing.MetricFacadeImpl;
 import com.justin.contrast.metrics.JettyChannelListenerMetricLogger;
@@ -19,9 +20,12 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import static org.springframework.core.Ordered.LOWEST_PRECEDENCE;
+
 @Configuration
 public class SpringConfig {
 
+    private static final String APIS = "/accounts/*";
     @Value("${app.metric.buffer.size}")
     private int metricBufferSize;
     @Value("${app.metric.queue.size}")
@@ -42,25 +46,24 @@ public class SpringConfig {
         return new MetricServiceImpl(facade);
     }
 
-    // TODO: remove
-    /*@Bean
+    @Bean
     public FilterRegistrationBean<MetricFilter> loggingFilter(final MetricFacade metricFacade) {
         final FilterRegistrationBean<MetricFilter> filter = new FilterRegistrationBean<>();
 
         filter.setFilter(new MetricFilter(metricFacade));
-        filter.addUrlPatterns("/accounts/*");
-        filter.setName("Metric logging filter");
+        filter.addUrlPatterns(APIS);
+        filter.setName("MetricFilter");
         filter.setOrder(LOWEST_PRECEDENCE);
 
         return filter;
-    }*/
+    }
 
     @Bean
     public FilterRegistrationBean<UniqueIdHeaderFilter> uniqueIdHeaderFilter() {
         final FilterRegistrationBean<UniqueIdHeaderFilter> filter = new FilterRegistrationBean<>();
 
         filter.setFilter(new UniqueIdHeaderFilter());
-        filter.addUrlPatterns("/accounts/*");
+        filter.addUrlPatterns(APIS);
         filter.setName("UniqueIdHeaderFilter");
 
         return filter;
