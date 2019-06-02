@@ -152,3 +152,4 @@ Here is an example of setting one of these values and starting the app:
 + Replace the usage of immutable metric stats with a single class that captures the stats, therefore eliminating the need to allocate the objects each time we have new metrics or a batch of new metrics arrive.
 + In order to remove contention on the blocking queue and move the flow from Multi Producer Single consumer, to Single Producer, Single Consumer, each thread could have its own queue that it adds metrics to.  These are then processed onto a centralised queue, or perhaps consumed as they become available by a single consumer.  This would ease any contention on the queue.
 + I have done zero logging currently and would add this for specific scenarios, i.e. when metrics cannot be added to the queue, etc.
++ Make the perf test also fetch some metrics and enforce that they are valid.
