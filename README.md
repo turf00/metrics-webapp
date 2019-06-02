@@ -141,6 +141,10 @@ There are a number of configuration settings which can be adjusted from the comm
 | app.metric.buffer.size | How many metrics to retain in memory at one time.                                                                                                                                                      | 2048    |
 | app.jetty.threads      | Maximum number of request handling threads to allow, i.e. the max number of concurrent requests that can be processed at once.                                                                         | 500     |
 
+Here is an example of setting one of these values and starting the app:
+
+`java -Dapp.jetty.threads=998 -jar contrast-example-webapp/target/contrast-example-webapp-0.1-SNAPSHOT.jar`
+
 ## Future Work
 
 + Dockerise the application and the build.
