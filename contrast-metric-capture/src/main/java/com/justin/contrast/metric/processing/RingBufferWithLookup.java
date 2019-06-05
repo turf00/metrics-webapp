@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicReferenceArray;
  * This class is thread safe for concurrent reading but not writing.  It is therefore designed for a single writer and multiple readers.
  * The class maintains a ring buffer of entries up to its maximum capacity with FIFO semantics.
  * It supports fast lookup of values by the key using a map internally and therefore should be O(1) lookup.
- * The class handles up to {@value Long#MAX_VALUE} requests in total which should be more than enough for any application.
+ * The class handles up to {@value Integer#MAX_VALUE} requests in total which should be more than enough for any application.
  * @param <K> the key type used for looking up values quickly.
  * @param <V> the value type, i.e. the actual data stored.
  */
